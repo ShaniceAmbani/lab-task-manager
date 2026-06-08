@@ -7,7 +7,6 @@ from task_manager.task_utils import (
 
 tasks = []
 
-
 while True:
 
     print("\nTASK MANAGEMENT SYSTEM")
@@ -44,7 +43,7 @@ while True:
             number = int(input("Task number: "))
             mark_task_as_complete(tasks, number)
         except ValueError:
-            print("Please enter a valid number.")
+            print("Invalid input")
 
 
     elif choice == "3":
@@ -65,4 +64,4 @@ while True:
 
 
     else:
-        print("Invalid choice. Try again.")
+        print("Invalid choice")
