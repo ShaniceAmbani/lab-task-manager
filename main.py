@@ -26,6 +26,7 @@ while True:
 
         try:
             add_task(tasks, title, description, due_date)
+            print("Task added successfully")
         except ValueError as e:
             print(e)
 
@@ -33,22 +34,37 @@ while True:
     elif choice == "2":
 
         if len(tasks) == 0:
-            print("No tasks available.")
+            print("No tasks available")
             continue
 
         for i, task in enumerate(tasks, start=1):
             print(f"{i}. {task['title']}")
 
         try:
-            number = int(input("Task number: "))
-            mark_task_as_complete(tasks, number)
+            num = int(input("Task number: "))
+            result = mark_task_as_complete(tasks, num)
+
+            if result:
+                print("Task marked as complete")
+            else:
+                print("Invalid task number")
+
         except ValueError:
             print("Invalid input")
 
 
     elif choice == "3":
 
-        view_pending_tasks(tasks)
+        pending = view_pending_tasks(tasks)
+
+        if len(pending) == 0:
+            print("No pending tasks")
+        else:
+            for i, task in enumerate(pending, start=1):
+                print(f"\nTask {i}")
+                print(f"Title: {task['title']}")
+                print(f"Description: {task['description']}")
+                print(f"Due Date: {task['due_date']}")
 
 
     elif choice == "4":
@@ -59,7 +75,7 @@ while True:
 
     elif choice == "5":
 
-        print("Goodbye!")
+        print("Goodbye")
         break
 
 
